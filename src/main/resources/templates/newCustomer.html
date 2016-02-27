@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style type="text/css">
+  
+  .fieldError {
+    background-color: red;
+  }
+  
+  .small {
+    background-color: yellow;
+  }
+  </style>
+</head>
+<body>
+  <h1>Form</h1>
+  
+    <form action="#" th:action="@{/newCustomer}" th:object="${customer}" method="post">
+      <p>First name: <input type="text" th:field="*{firstName}" /></p>
+      <p>Last name: <input type="text" th:field="*{lastName}" /></p>
+
+      <div>
+        E-Mail:
+         
+        <input type="text" 
+          th:field="*{email}" 
+          class="small" 
+          th:errorclass="fieldError" />
+        
+				<ul>
+				  <li th:each="err : ${#fields.errors('email')}" th:text="${err}" />
+				</ul>
+      </div>      
+      
+      
+      <p>Street: <input type="text" th:field="*{street}" /></p>
+      <p>Zip code: <input type="text" th:field="*{zipCode}" /></p>
+      <p>City: <input type="text" th:field="*{city}" /></p>
+      <p>Country: 
+				<select th:field="*{countryCode}">
+				  <option th:each="cc : ${countryCodes}" 
+				          th:value="${cc}" 
+				          th:text="#{${'country.' + cc}}">Deutschland</option>
+				</select>      
+		  </p>
+      * <span th:value="#{countryCodes}"></span>
+      <br/>
+      * <span th:value="${countryCodes}"></span>
+      <br/>
+      * #{countryCodes}
+      <br/>
+      * ${countryCodes}
+      <hr/>
+      * <span th:text="${countryCodes}" th:remove="tag">title</span>
+      <hr/>
+        <ul>
+              <li th:each="row,rowStat : ${countryCodes}">
+                <span th:text="${rowStat.count}">1</span>
+                <span th:text="${row}">Thymus Thymi</span>
+              </li>      
+        </ul>
+      <hr/>
+      <p>
+        <input type="submit" value="Submit" /> 
+        <input type="reset" value="Reset" /></p>
+    </form>
+</body>
+</html>

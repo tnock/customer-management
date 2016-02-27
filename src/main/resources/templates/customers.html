@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customers</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+  <h1>Customer Management</h1>
+
+	<div class="seedstarterlist" th:unless="${#lists.isEmpty(customers)}">
+	    
+	  <h2 th:text="#{m0001.title}">List of all customers</h2>
+	  
+	  <table>
+	    <thead>
+	      <tr>
+	        <th colspan="2" th:text="#{m0001.tablehead.name}">Name</th>
+	        <th th:text="#{m0001.tablehead.email}">E-Mail</th>
+	        <th colspan="3" th:text="#{m0001.tablehead.address}">Address</th>
+	        <th th:text="#{m0001.tablehead.country}">Address</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr th:each="customer : ${customers}">
+	        <td th:text="${{customer.firstName}}">Peter</td>
+	        <td th:text="${{customer.lastName}}">Wright</td>
+	        <td th:text="${{customer.email}}">peter@wright.com</td>
+	        <td th:text="${{customer.street}}">Gasse 3</td>
+	        <td th:text="${{customer.zipCode}}">10992</td>
+	        <td th:text="${{customer.city}}">Berlin</td>
+	        <td th:text="${{customer.countryCode}}">DE</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+  
+</body>
+</html>
