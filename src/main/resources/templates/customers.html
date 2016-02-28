@@ -7,7 +7,7 @@
 <body>
   <h1>Customer Management</h1>
 
-	<div class="seedstarterlist" th:unless="${#lists.isEmpty(customers)}">
+	<div th:unless="${#lists.isEmpty(customers)}">
 	    
 	  <h2 th:text="#{m0001.title}">List of all customers</h2>
 	  

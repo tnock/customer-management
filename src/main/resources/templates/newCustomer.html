@@ -8,10 +8,6 @@
   .fieldError {
     background-color: red;
   }
-  
-  .small {
-    background-color: yellow;
-  }
   </style>
 </head>
 <body>
@@ -26,7 +22,6 @@
          
         <input type="text" 
           th:field="*{email}" 
-          class="small" 
           th:errorclass="fieldError" />
         
 				<ul>

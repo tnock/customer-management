@@ -72,14 +72,14 @@ public class NewCustomerController {
         Customer customer = new Customer();
 
         customer.setFirstName(customerDto.getFirstName());
-        customer.setFirstName(customerDto.getLastName());
+        customer.setLastName(customerDto.getLastName());
 
-        customer.setFirstName(customerDto.getEmail());
+        customer.setEmail(customerDto.getEmail());
 
-        customer.setFirstName(customerDto.getStreet());
-        customer.setFirstName(customerDto.getZipCode());
-        customer.setFirstName(customerDto.getCity());
-        customer.setFirstName(customerDto.getCountryCode());
+        customer.setStreet(customerDto.getStreet());
+        customer.setZipCode(customerDto.getZipCode());
+        customer.setCity(customerDto.getCity());
+        customer.setCountryCode(customerDto.getCountryCode());
 
         return customer;
     }

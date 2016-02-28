@@ -33,6 +33,9 @@ public class CustomerController {
         return customerRepository.findAll();
     }
 
+    /**
+     * @return view name of matching thymeleaf template
+     */
     @RequestMapping(value = "/customers", method = RequestMethod.GET)
     public String getCustomers() {
 
