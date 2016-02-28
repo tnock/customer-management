@@ -3,12 +3,28 @@
 <head>
     <title>Startseite</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/2.2.1/css/bootstrap.min.css" 
+        th:href="@{/webjars/bootstrap/2.2.1/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.2.1/js/bootstrap.min.js" 
+        th:src="@{/webjars/bootstrap/2.2.1/js/bootstrap.min.js}"></script>
 </head>
 <body>
-  <h1>Customer Management</h1>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Customer Management</h1>
+    </div>
+  </div>
   
-  <a href="/newCustomer">New Customer</a>
-  <br/>
-  <a href="/customers">All customers</a>
+  <div class="row">
+    <div class="col-md-12">
+      <a href="newCustomer" th:href="@{/newCustomer}">New Customer</a>
+      <br/>
+      <a href="customers" th:href="@{/customers}">All customers</a>
+    </div>
+  </div>
+</div>
 </body>
 </html>

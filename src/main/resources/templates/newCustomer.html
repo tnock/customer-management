@@ -3,63 +3,95 @@
 <head>
     <title>Getting Started: Handling Form Submission</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/2.2.1/css/bootstrap.min.css" 
+        th:href="@{/webjars/bootstrap/2.2.1/css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/2.2.1/js/bootstrap.min.js" 
+        th:src="@{/webjars/bootstrap/2.2.1/js/bootstrap.min.js}"></script>
+    
   <style type="text/css">
   
   .fieldError {
-    background-color: red;
+    background-color: red!;
   }
   </style>
 </head>
 <body>
-  <h1>Form</h1>
-  
-    <form action="#" th:action="@{/newCustomer}" th:object="${customer}" method="post">
-      <p>First name: <input type="text" th:field="*{firstName}" /></p>
-      <p>Last name: <input type="text" th:field="*{lastName}" /></p>
+<div class="container">
 
-      <div>
-        E-Mail:
-         
-        <input type="text" 
-          th:field="*{email}" 
-          th:errorclass="fieldError" />
-        
-				<ul>
-				  <li th:each="err : ${#fields.errors('email')}" th:text="${err}" />
-				</ul>
-      </div>      
-      
-      
-      <p>Street: <input type="text" th:field="*{street}" /></p>
-      <p>Zip code: <input type="text" th:field="*{zipCode}" /></p>
-      <p>City: <input type="text" th:field="*{city}" /></p>
-      <p>Country: 
-				<select th:field="*{countryCode}">
-				  <option th:each="cc : ${countryCodes}" 
-				          th:value="${cc}" 
-				          th:text="#{${'country.' + cc}}">Deutschland</option>
-				</select>      
-		  </p>
-      * <span th:value="#{countryCodes}"></span>
-      <br/>
-      * <span th:value="${countryCodes}"></span>
-      <br/>
-      * #{countryCodes}
-      <br/>
-      * ${countryCodes}
-      <hr/>
-      * <span th:text="${countryCodes}" th:remove="tag">title</span>
-      <hr/>
+  <div class="row">
+    <div class="col-md-9">
+      <h1>New customer</h1>
+    </div>
+  </div>
+
+	<form action="#" th:action="@{/newCustomer}" th:object="${customer}" method="post" role="form">
+	
+	  <div class="form-group">
+	    <label for="firstName">First name:</label>
+	    <input type="text" class="form-control" placeholder="First name" 
+        th:field="*{firstName}" 
+        id="firstName"/>
+	  </div>
+	  
+	  <div class="form-group">
+	    <label for="lastName">Last name:</label>
+	    <input type="text" class="form-control" placeholder="Last name" 
+        th:field="*{lastName}" 
+        id="lastName"/>
+	  </div>
+	  
+	  <div class="form-group">
+	    <label for="email">Email address:</label>
+	    <input type="email" class="form-control" id="email" placeholder="E-Mail"
+	     th:field="*{email}"
+	     th:errorclass="fieldError" />
+
         <ul>
-              <li th:each="row,rowStat : ${countryCodes}">
-                <span th:text="${rowStat.count}">1</span>
-                <span th:text="${row}">Thymus Thymi</span>
-              </li>      
+          <li th:each="err : ${#fields.errors('email')}" th:text="${err}" />
         </ul>
-      <hr/>
-      <p>
-        <input type="submit" value="Submit" /> 
-        <input type="reset" value="Reset" /></p>
-    </form>
+
+	  </div>
+
+    <div class="form-group">
+      <label for="street">Street:</label>
+      <input type="text" class="form-control" placeholder="Street" 
+        th:field="*{street}" 
+        id="street"/>
+    </div>
+
+    <div class="form-group">
+      <label for="zipCode">ZIP code:</label>
+      <input type="text" class="form-control" placeholder="ZIP code" 
+        th:field="*{zipCode}" 
+        id="zipCode"/>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City:</label>
+      <input type="text" class="form-control" placeholder="City" 
+        th:field="*{city}" 
+        id="city"/>
+    </div>
+
+    <div class="form-group">
+      <label for="countryCode">Country:</label>
+        <select class="form-control" th:field="*{countryCode}">
+          <option th:each="cc : ${countryCodes}" 
+                  th:value="${cc}" 
+                  th:text="#{${'country.' + cc}}">Deutschland</option>
+        </select>
+      </div>
+    
+	  <!-- /* 
+	  <div class="checkbox">
+	    <label><input type="checkbox" /> Remember me</label>
+	  </div>
+	  */ -->
+	  
+	  <button type="submit" class="btn btn-default">Submit</button>
+	  
+	</form>
+      
+</div>
 </body>
 </html>
