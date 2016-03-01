@@ -19,6 +19,10 @@ public class Customer {
 
     private String email;
 
+    private String companyName;
+
+    private String phone;
+
     private String firstName;
 
     private String lastName;
@@ -35,11 +39,13 @@ public class Customer {
         super();
     }
 
-    public Customer(String firstName, String lastName, String email) {
+    public Customer(String firstName, String lastName, String email,
+            String companyName) {
         super();
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.companyName = companyName;
     }
 
     public String getFirstName() {
@@ -100,6 +106,22 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     @Override

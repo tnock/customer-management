@@ -64,7 +64,7 @@ public class NewCustomerController {
 
         customerRepository.save(customer);
 
-        return "redirect:/newCustomer";
+        return "redirect:/customers";
     }
 
     private Customer convert(CustomerDto customerDto) {
@@ -75,6 +75,8 @@ public class NewCustomerController {
         customer.setLastName(customerDto.getLastName());
 
         customer.setEmail(customerDto.getEmail());
+        customer.setCompanyName(customerDto.getCompanyName());
+        customer.setPhone(customerDto.getPhone());
 
         customer.setStreet(customerDto.getStreet());
         customer.setZipCode(customerDto.getZipCode());

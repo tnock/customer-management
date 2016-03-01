@@ -30,18 +30,18 @@ public class Application {
 
         return (args) -> {
 
-            customerRepository
-                    .save(new Customer("Jack", "Bauer", "bauer@ctu.gov"));
-            customerRepository
-                    .save(new Customer("Bruce", "Wayne", "bruce@wayne.com"));
-            customerRepository
-                    .save(new Customer("Evil", "Knevil", "info@evil.org"));
-            customerRepository
-                    .save(new Customer("Bruce", "Banner", "hulk@avengers.org"));
-            customerRepository
-                    .save(new Customer("John", "Starks", "starks@nyn.sports"));
             customerRepository.save(
-                    new Customer("Charles", "Barkley", "barks@phoenix.suns"));
+                    new Customer("Jack", "Bauer", "bauer@ctu.gov", "CTU"));
+            customerRepository.save(new Customer("Bruce", "Wayne",
+                    "bruce@wayne.com", "Wayne Enterprises"));
+            customerRepository.save(new Customer("Evil", "Knevil",
+                    "info@evil.org", "Evil.org"));
+            customerRepository.save(new Customer("Bruce", "Banner",
+                    "hulk@avengers.org", "Avengers"));
+            customerRepository.save(new Customer("John", "Starks",
+                    "starks@nyn.sports", "NV Knicks"));
+            customerRepository.save(new Customer("Charles", "Barkley",
+                    "barks@phoenix.suns", "Phoenix Suns"));
 
             // fetch all customers
             log.info("Customers found with findAll():");

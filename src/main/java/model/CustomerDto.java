@@ -14,6 +14,10 @@ public class CustomerDto {
     @NotEmpty
     private String email;
 
+    private String companyName;
+
+    private String phone;
+
     private String firstName;
 
     private String lastName;
@@ -88,6 +92,22 @@ public class CustomerDto {
 
     public void setCountryCode(String countryCode) {
         this.countryCode = countryCode;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
 }
