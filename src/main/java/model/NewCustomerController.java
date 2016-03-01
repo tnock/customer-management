@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -24,12 +25,12 @@ public class NewCustomerController {
 
     private Logger log = LoggerFactory.getLogger(getClass());
 
-    private CustomerRepository customerRepository;
+    private NewCustomerService newCustomerService;;
 
     @Autowired
-    public NewCustomerController(CustomerRepository customerRepository) {
+    public NewCustomerController(NewCustomerService newCustomerService) {
         super();
-        this.customerRepository = customerRepository;
+        this.newCustomerService = newCustomerService;
     }
 
     @ModelAttribute("customer")
@@ -39,7 +40,6 @@ public class NewCustomerController {
 
     @ModelAttribute("countryCodes")
     public List<String> initCountryCodes() {
-
         return Arrays.asList("DE", "UK", "NO", "FR", "ES", "DK");
     }
 
@@ -52,7 +52,8 @@ public class NewCustomerController {
     @RequestMapping(value = "/newCustomer", method = RequestMethod.POST)
     public String createCustomer(
             @Valid @ModelAttribute("customer") CustomerDto customerDto,
-            BindingResult bindingResult) {
+            BindingResult bindingResult,
+            RedirectAttributes redirectAttributes) {
 
         log.info("New customer: " + customerDto);
 
@@ -60,30 +61,12 @@ public class NewCustomerController {
             return "newCustomer";
         }
 
-        Customer customer = convert(customerDto);
+        Customer customer = newCustomerService.createNewCustomer(customerDto);
 
-        customerRepository.save(customer);
+        redirectAttributes.addFlashAttribute("message",
+                "Successfully added customer nr. " + customer.getId());
 
         return "redirect:/customers";
-    }
-
-    private Customer convert(CustomerDto customerDto) {
-
-        Customer customer = new Customer();
-
-        customer.setFirstName(customerDto.getFirstName());
-        customer.setLastName(customerDto.getLastName());
-
-        customer.setEmail(customerDto.getEmail());
-        customer.setCompanyName(customerDto.getCompanyName());
-        customer.setPhone(customerDto.getPhone());
-
-        customer.setStreet(customerDto.getStreet());
-        customer.setZipCode(customerDto.getZipCode());
-        customer.setCity(customerDto.getCity());
-        customer.setCountryCode(customerDto.getCountryCode());
-
-        return customer;
     }
 
 }

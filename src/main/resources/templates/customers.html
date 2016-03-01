@@ -12,12 +12,22 @@
 
 <div class="container">
 
+  <div class="row" th:if="${message != null}">
+  
+    <div class="col-md-12">
+			<div class="alert alert-success">
+        <span th:text="${message}">Hinweis</span>
+      </div> 
+    </div>
+  </div>
+
   <div class="row">
     <div class="col-md-12">
       <h1>Customer Management</h1>
     </div>
   </div>
-
+  
+ 
   <form action="#" th:action="@{/customers}" th:object="${customerSearchForm}" method="post" role="form">
   
     <div class="form-group">
