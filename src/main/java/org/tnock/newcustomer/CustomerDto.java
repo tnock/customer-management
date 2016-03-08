@@ -1,4 +1,4 @@
-package model;
+package org.tnock.newcustomer;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

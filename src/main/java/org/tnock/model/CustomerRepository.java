@@ -1,4 +1,4 @@
-package model;
+package org.tnock.model;
 
 import java.util.List;
 

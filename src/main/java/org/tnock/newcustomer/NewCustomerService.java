@@ -1,6 +1,8 @@
-package model;
+package org.tnock.newcustomer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.tnock.model.Customer;
+import org.tnock.model.CustomerRepository;
 
 /**
  *
