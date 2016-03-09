@@ -1,4 +1,4 @@
-package org.tnock;
+package org.tnock.customers;
 
 import java.util.List;
 
