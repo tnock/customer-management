@@ -1,4 +1,4 @@
-package org.tnock.beans;
+package org.tnock;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.tnock.model.Customer;
-import org.tnock.model.CustomerRepository;
 
 /**
  *
@@ -15,9 +14,6 @@ import org.tnock.model.CustomerRepository;
  *
  */
 @SpringBootApplication
-// @ComponentScan(basePackageClasses = { CustomerController.class,
-// Application.class })
-// @ComponentScan()
 public class Application {
 
     private static final Logger log = LoggerFactory
