@@ -56,7 +56,7 @@ public class NewCustomerController {
             BindingResult bindingResult,
             RedirectAttributes redirectAttributes) {
 
-        log.info("New customer: " + customerDto);
+        log.info("New customer saved in UI: {}", customerDto);
 
         if (bindingResult.hasErrors()) {
             return "newCustomer";

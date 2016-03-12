@@ -110,4 +110,10 @@ public class CustomerDto {
         this.phone = phone;
     }
 
+    @Override
+    public String toString() {
+        return "CustomerDto [email=" + email + ", firstName=" + firstName
+                + ", lastName=" + lastName + "]";
+    }
+
 }
