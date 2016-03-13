@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
 /**
  * @author Thomas Nock
  */
@@ -22,6 +24,7 @@ public class CustomerEventPublisher {
      * Public event
      * @param event
      */
+    @HystrixCommand(fallbackMethod = "publishFallback")
     public void publishNewCustomer(NewCustomerEvent event) {
         Class<Void> responseType = null;
 
@@ -32,6 +35,13 @@ public class CustomerEventPublisher {
         logger.info(
                 "NewCustomer event published for customer event {}. Result: {}",
                 event, postResult);
+    }
 
+    /**
+     * Fallback, when {@link #publishNewCustomer(NewCustomerEvent)} fails.
+     * @param event
+     */
+    public void publishFallback(NewCustomerEvent event) {
+        logger.warn("Publishing failed for event: {}", event);
     }
 }
